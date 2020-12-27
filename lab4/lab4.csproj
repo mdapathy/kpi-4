@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{16CD670A-0454-4BB1-87F2-F2A99E2797DB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>lab4</RootNamespace>
+    <AssemblyName>lab4</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="IIG.BinaryFlag">
+      <HintPath>..\..\IIG.BinaryFlag.dll</HintPath>
+    </Reference>
+    <Reference Include="IIG.DatabaseConnectionUtils">
+      <HintPath>..\..\IIG.DatabaseConnectionUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="IIG.FileWorker">
+      <HintPath>..\..\IIG.FileWorker.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lab3\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tests\BinaryFlagTest.cs" />
+    <Compile Include="src\PasswordHasher.cs" />
+    <Compile Include="src\utils\AuthDatabaseUtils.cs" />
+    <Compile Include="tests\PasswordHashingUtilsTest.cs" />
+    <Compile Include="tests\BinaryFlagTestWithFileWorker.cs" />
+    <Compile Include="tests\PasswordHashingUtilsWithAuthDBTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+    <Folder Include="tests\" />
+    <Folder Include="src\utils\" />
+    <Folder Include="txt_src\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="txt_src\write.txt" />
+    <None Include="txt_src\try_write.txt" />
+    <None Include="txt_src\read_lines.txt" />
+    <None Include="txt_src\read_all.txt" />
+    <None Include="txt_src\try_write_fails.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
